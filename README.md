@@ -1,3 +1,2 @@
-# INFO 443 Project (replace this with your title!)
-
-(Your content goes here)
+# Forte
+The authors who created are Keith Ellingwood III, Niha Gaddam, Taylor Jackson, and Sebastian Augusto Pasion. This React App allows users to submit event cards of upcoming house shows, as well as discuss various topics regarding music with other users. 
