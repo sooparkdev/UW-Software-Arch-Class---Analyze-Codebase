@@ -18,7 +18,7 @@ export function Events(props){
     const db = getDatabase();
     const eventCardRef = ref(db, "events");
     onValue(eventCardRef, (snapshot) => {
-        if (snapshot.exists()) {
+        if (snapshot.val() !== null) {
             setEvents(snapshot.val());
         } else {
           console.log("No data available");
