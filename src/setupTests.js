@@ -2,7 +2,7 @@
 
 //DEFINE INITIAL DATA STORAGE
 const MOCK_INITIAL_DATA = {
-  events: {},
+  events: {'post1': {'alt': 'person playing music', 'band': 'Haha look at us go', 'date': '2022-12-25', 'eventContent': 'Christmas show!', 'genre': 'pop', 'img': 'https://media.istockphoto.com/photos/vegetables-rock-band-picture-id156775639', 'location': 'Udistrict', 'key': 1}, 'invalidPost': {'band': 'No Alternative Text', 'date': '2022-11-11', 'eventContent': 'A test show!', 'genre': 'pop', 'img': 'https://media.istockphoto.com/photos/vegetables-rock-band-picture-id156775639', 'location': 'Udistrict', 'key': 2}},
   forum_posts: {}
 }
 
