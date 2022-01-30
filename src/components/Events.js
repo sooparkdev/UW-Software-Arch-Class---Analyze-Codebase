@@ -186,13 +186,23 @@ export function NewEvent(props) {
     return <option value={currLoc.location} key={index}>{currLoc.location}</option>
   })
 
-  const [currUser, setUser] = useState();
-  const [eventError, setEventError] = useState(null);
+  // const [currUser, setUser] = useState();
+  // const [eventError, setEventError] = useState(null);
+
+  // const auth = getAuth();
+  //   onAuthStateChanged(auth, (user) => {
+  //       if (user) {
+  //           setUser(user);
+  //       }
+  //   });
+
+  let eventError = null;
+  let currUser = {};
 
   const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            setUser(user);
+            currUser = user;
         }
     });
 
@@ -222,7 +232,8 @@ export function NewEvent(props) {
     } else {
         const errorMessage = "Cannot make post! User is not logged in."
         console.log("something went wrong with user");
-        setEventError(errorMessage);
+        // setEventError(errorMessage);
+        eventError = errorMessage;
     }
 
   }
@@ -241,7 +252,7 @@ export function NewEvent(props) {
     <FloatingLabel controlId="floatingInput"
     label="Band Name"
     className="mb-3">
-        <Form.Control type="bandName" placeholder="Enter Band Name" name="bandName" />
+        <Form.Control data-testid="band-name" type="bandName" placeholder="Enter Band Name" name="bandName" />
         </FloatingLabel>
       </Form.Group>
       </Col>

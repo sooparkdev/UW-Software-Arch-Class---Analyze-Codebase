@@ -24,7 +24,7 @@ export default function App(props) {
                 <Router>
                     <Routes>
                         <Route exact path="/" element={<Events cards={EVENTS} />} />
-                        <Route path="/newevent" element={<NewEvent genres={GENRES} locations={LOCATIONS}/>} />
+                        <Route path="/newevent" element={<NewEvent genres={GENRES} locations={LOCATIONS} />} />
                         <Route path="/forums" element={<Forums posts={FORUM_POSTS} forums={FORUM_OPTIONS} />} />
                         <Route path="/forums/newpost" element={<NewPost genres={FORUM_OPTIONS} />} />
                         <Route path="/login" element={<Login />} />
