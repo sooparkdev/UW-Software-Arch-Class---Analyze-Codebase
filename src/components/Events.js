@@ -206,7 +206,9 @@ export function NewEvent(props) {
         }
     });
 
+  
   const handleSubmit = (event) => {
+    console.log(event.target);
     if (currUser) {
       event.preventDefault();
       const band = event.target.bandName.value;
@@ -252,7 +254,7 @@ export function NewEvent(props) {
     <FloatingLabel controlId="floatingInput"
     label="Band Name"
     className="mb-3">
-        <Form.Control data-testid="band-name" type="bandName" placeholder="Enter Band Name" name="bandName" />
+        <Form.Control type="bandName" placeholder="Enter Band Name" name="bandName" />
         </FloatingLabel>
       </Form.Group>
       </Col>
@@ -290,7 +292,7 @@ export function NewEvent(props) {
       <Col xs="auto">
       <Form.Group controlId="locationInput" className="mb-3">
       <FloatingLabel controlId="floatingSelect" label="Location">
-        <Form.Select  aria-label="Floating label" name="location" id="location">
+        <Form.Select data-testid="location" aria-label="Floating label" name="location" id="location">
         <option>Select Neighborhood</option>
           {locationElem}
         </Form.Select>
@@ -301,7 +303,7 @@ export function NewEvent(props) {
       <Col xs="auto">
       <Form.Group controlId="genreInput" className="mb-3">
       <FloatingLabel controlId="floatingSelect" label="Genre">
-          <Form.Select aria-label="Floating label" name="genre" id="genre">
+          <Form.Select data-testid="genre" aria-label="Floating label" name="genre" id="genre">
             {genreElem}
           </Form.Select>
           </FloatingLabel>
