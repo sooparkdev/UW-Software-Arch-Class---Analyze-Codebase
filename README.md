@@ -19,5 +19,5 @@ This will run the tests automatically, showing the number of tests passed or fai
 These unit tests cover most of the Events.js module, except for a large chunk in the New Events function (lines 215-238). This is because we were unable to test the part of New Events that actually pushed user-provided information to a Firebase realtime database. Besides this chunk, the only untested code were lines that either were included in the final project as an accident (console.log statements), variables that are not utilized, or situations that cannot occur.
 
 <p>
-<img src="images/P1_Checkpoint3_Coverage.png">
+<img src="images/P1_Checkpoint3_Coverage.PNG">
 </p>
