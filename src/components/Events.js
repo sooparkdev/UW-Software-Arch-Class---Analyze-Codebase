@@ -208,7 +208,7 @@ export function NewEvent(props) {
 
   
   const handleSubmit = (event) => {
-    console.log(event.target);
+    console.log(event);
     if (currUser) {
       event.preventDefault();
       const band = event.target.bandName.value;
@@ -335,7 +335,7 @@ export function NewEvent(props) {
   )
 }
 
-function ErrorHandler(props) {
+export function ErrorHandler(props) {
   if(props.error === undefined) {
       return null;
   } else {

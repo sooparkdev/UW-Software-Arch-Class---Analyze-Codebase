@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Router, MemoryRouter } from 'react-router-dom';
-import { Events, Filter, NewEvent, BigCard } from './components/Events.js'
+import { Events, Filter, NewEvent, BigCard, ErrorHandler } from './components/Events.js'
 import GENRES from './data/genres.json'
 import LOCATIONS from './data/locations.json'
 
@@ -111,5 +111,13 @@ describe ('Big Card component', () => {
         expect(screen.getByText("mock name")).toBeInTheDocument();
         expect(screen.getByAltText("mock alt"));
         expect(screen.getByText("2022-01-30"));
+    })
+})
+
+describe ('Error handler function', () => {
+    test('User is informed if an error occurred', () => {
+        let error = "Oh wowzers that is bad";
+        render(<ErrorHandler error={error}/>);
+        expect(screen.getByText("Oh wowzers that is bad")).toBeInTheDocument();
     })
 })
