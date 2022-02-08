@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Router, MemoryRouter } from 'react-router-dom';
-import { Events, Filter, NewEvent, BigCard } from './components/Events.js'
+import { Events, Filter, NewEvent, BigCard, ErrorHandler } from './components/Events.js'
 import GENRES from './data/genres.json'
 import LOCATIONS from './data/locations.json'
 
@@ -13,12 +13,12 @@ describe('Events component', () => {
     test('Events renders correctly using database data', () => {
         render(<Events/>, {wrapper: MemoryRouter});
         expect(screen.getByText("Haha look at us go")).toBeInTheDocument();
-        expect(screen.getByAltText("person playing music"));
+        expect(screen.getByAltText("person playing music")).toBeInTheDocument();
     })
-    // TESTS NEED TO BE ACTUAL CASES WHERE IT COULD GO WRONG
-    //test('Pressing the New Event button results in a different page rendered', () => {
-        
-    //})
+    test('Events page can navigate users to the New Events page', () => {
+        render(<Events/>, {wrapper: MemoryRouter});
+        expect(screen.getByRole('link')).toHaveAttribute('href', '/newevent');
+    })
 })
 
 describe('Filter component', () => {
@@ -110,5 +110,13 @@ describe ('Big Card component', () => {
         expect(screen.getByText("mock name")).toBeInTheDocument();
         expect(screen.getByAltText("mock alt"));
         expect(screen.getByText("2022-01-30"));
+    })
+})
+
+describe ('Error handler function', () => {
+    test('User is informed if an error occurred', () => {
+        let error = "Oh wowzers that is bad";
+        render(<ErrorHandler error={error}/>);
+        expect(screen.getByText("Oh wowzers that is bad")).toBeInTheDocument();
     })
 })

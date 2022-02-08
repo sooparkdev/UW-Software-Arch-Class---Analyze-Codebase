@@ -218,7 +218,7 @@ export function NewEvent(props) {
   //**REFACTOR THIS PART** What is event in this case?
   const handleSubmit = (event) => { 
     event.preventDefault(); 
-    
+  
     if (currUser) {
   
       const band = event.target.elements.bandName.value;
@@ -345,7 +345,7 @@ export function NewEvent(props) {
   )
 }
 
-function ErrorHandler(props) {
+export function ErrorHandler(props) {
   if(props.error === undefined) {
       return null;
   } else {
