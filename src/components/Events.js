@@ -17,20 +17,25 @@ export function Events(props){
   useEffect(() => {
     const db = getDatabase();
     const eventCardRef = ref(db, "events");
-    onValue(eventCardRef, (snapshot) => {
+    const stopListener = onValue(eventCardRef, (snapshot) => {
         if (snapshot.val() !== null) {
             setEvents(snapshot.val());
         } else {
           console.log("No data available");
         }
       });
+    return function cleanup() { 
+      stopListener();
+      console.log("component has been removed!")
+    }
   }, []);
 
   const currEvents = eventsState;
   const currEventKeys = Object.keys(currEvents);
   const currEventArray = currEventKeys.map((key) => {
     const singleEventCopy = {...currEvents[key]}
-    singleEventCopy.key = key;
+    singleEventCopy.key = key; //
+    console.log(singleEventCopy);
     return singleEventCopy;
   });
 
@@ -61,7 +66,10 @@ export function Events(props){
     return genreShouldShow && neighborhoodShouldShow && dateShouldShow
     
     }).map(currCard => {
+      console.log("************UNIQUE KEY******************")
+      console.log(currCard.id) //unique key is not being assigned 
       return <BigCard card={currCard} key={currCard.id} />
+      
   });
 
   return (
@@ -185,10 +193,11 @@ export function NewEvent(props) {
   let locationElem = props.locations.map((currLoc, index) => {
     return <option value={currLoc.location} key={index}>{currLoc.location}</option>
   })
-
+  //the problem isn't the existence of the state variables, the problems is where you calling the setState
   // const [currUser, setUser] = useState();
   // const [eventError, setEventError] = useState(null);
 
+  //********USE EFFECT HOOK********* 
   // const auth = getAuth();
   //   onAuthStateChanged(auth, (user) => {
   //       if (user) {
@@ -206,21 +215,22 @@ export function NewEvent(props) {
         }
     });
 
-  
-  const handleSubmit = (event) => {
-    console.log(event.target);
+  //**REFACTOR THIS PART** What is event in this case?
+  const handleSubmit = (event) => { 
+    event.preventDefault(); 
+    
     if (currUser) {
-      event.preventDefault();
-      const band = event.target.bandName.value;
-      const bandImage = event.target.bandImage.value;
-      const alt = event.target.alt.value;
-      const date = event.target.date.value;
-      const location = event.target.location.value;
-      const genre = event.target.genre.value;
-      const eventContent = event.target.eventContent.value;
+  
+      const band = event.target.elements.bandName.value;
+      const bandImage = event.target.elements.bandImage.value;
+      const alt = event.target.elements.alt.value;
+      const date = event.target.elements.date.value;
+      const location = event.target.elements.location.value;
+      const genre = event.target.elements.genre.value;
+      const eventContent = event.target.elements.eventContent.value;
       const db = getDatabase();
 
-      set(push(ref(db, "events")), {
+      push(ref(db, "events")), {
           band: band,
           img: bandImage,
           alt: alt,
@@ -228,7 +238,7 @@ export function NewEvent(props) {
           location: location,
           genre: genre,
           eventContent: eventContent
-      });
+      };
 
         
     } else {
@@ -250,8 +260,8 @@ export function NewEvent(props) {
         
     <Form onSubmit={handleSubmit}>
     <Col xs="auto">
-    <Form.Group controlId="bandNameInput">
-    <FloatingLabel controlId="floatingInput"
+    <Form.Group controlId="bandName">
+    <FloatingLabel controlId="bandName"
     label="Band Name"
     className="mb-3">
         <Form.Control type="bandName" placeholder="Enter Band Name" name="bandName" />
