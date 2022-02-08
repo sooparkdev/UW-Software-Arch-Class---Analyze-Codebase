@@ -34,8 +34,7 @@ export function Events(props){
   const currEventKeys = Object.keys(currEvents);
   const currEventArray = currEventKeys.map((key) => {
     const singleEventCopy = {...currEvents[key]}
-    singleEventCopy.key = key; //
-    console.log(singleEventCopy);
+    singleEventCopy.key = key; 
     return singleEventCopy;
   });
 
@@ -66,8 +65,6 @@ export function Events(props){
     return genreShouldShow && neighborhoodShouldShow && dateShouldShow
     
     }).map(currCard => {
-      console.log("************curr card******************")
-      console.log(currCard) //unique key is not being assigned 
       return <BigCard card={currCard} key={currCard.id} />
       
   });
@@ -98,7 +95,7 @@ export function Events(props){
 }
 
 export function Filter(props) {
-  const { filters} = props
+  const {filters} = props
 
   const onChange = (key, value) => {
     props.onChange(key,value);
@@ -236,7 +233,6 @@ export function NewEvent(props) {
         const errorMessage = "Cannot make post! User is not logged in."
         console.log("something went wrong with user");
         setEventError(errorMessage);
-        //eventError = errorMessage;
     }
 
   }
