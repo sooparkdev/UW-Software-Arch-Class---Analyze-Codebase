@@ -66,8 +66,8 @@ export function Events(props){
     return genreShouldShow && neighborhoodShouldShow && dateShouldShow
     
     }).map(currCard => {
-      console.log("************UNIQUE KEY******************")
-      console.log(currCard.id) //unique key is not being assigned 
+      console.log("************curr card******************")
+      console.log(currCard) //unique key is not being assigned 
       return <BigCard card={currCard} key={currCard.id} />
       
   });
@@ -193,34 +193,25 @@ export function NewEvent(props) {
   let locationElem = props.locations.map((currLoc, index) => {
     return <option value={currLoc.location} key={index}>{currLoc.location}</option>
   })
-  //the problem isn't the existence of the state variables, the problems is where you calling the setState
-  // const [currUser, setUser] = useState();
-  // const [eventError, setEventError] = useState(null);
+  const [currUser, setUser] = useState();
+  const [eventError, setEventError] = useState(null);
 
-  //********USE EFFECT HOOK********* 
-  // const auth = getAuth();
-  //   onAuthStateChanged(auth, (user) => {
-  //       if (user) {
-  //           setUser(user);
-  //       }
-  //   });
-
-  let eventError = null;
-  let currUser = {};
-
-  const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
+  useEffect(() => {
+    const auth = getAuth();
+    const stopListener = onAuthStateChanged(auth, (user) => {
         if (user) {
-            currUser = user;
+          setUser(user);
         }
     });
+    return function cleanup() { 
+      stopListener();
+      console.log("component has been removed!")
+    }
+  }, []);
 
-  //**REFACTOR THIS PART** What is event in this case?
   const handleSubmit = (event) => { 
     event.preventDefault(); 
-  
     if (currUser) {
-  
       const band = event.target.elements.bandName.value;
       const bandImage = event.target.elements.bandImage.value;
       const alt = event.target.elements.alt.value;
@@ -244,8 +235,8 @@ export function NewEvent(props) {
     } else {
         const errorMessage = "Cannot make post! User is not logged in."
         console.log("something went wrong with user");
-        // setEventError(errorMessage);
-        eventError = errorMessage;
+        setEventError(errorMessage);
+        //eventError = errorMessage;
     }
 
   }
@@ -264,7 +255,7 @@ export function NewEvent(props) {
     <FloatingLabel controlId="bandName"
     label="Band Name"
     className="mb-3">
-        <Form.Control type="bandName" placeholder="Enter Band Name" name="bandName" />
+        <Form.Control placeholder="Enter Band Name" name="bandName" />
         </FloatingLabel>
       </Form.Group>
       </Col>
@@ -274,7 +265,7 @@ export function NewEvent(props) {
     <FloatingLabel controlId="floatingTextarea"
     label="Band Image URL"
     className="mb-3">
-        <Form.Control type="url" placeholder="Band Image" name="bandImage"/>
+        <Form.Control placeholder="Band Image" name="bandImage"/>
         </FloatingLabel>
       </Form.Group>
       </Col>
@@ -284,7 +275,7 @@ export function NewEvent(props) {
     <FloatingLabel controlId="floatingInput"
     label="Image Description"
     className="mb-3">
-        <Form.Control type="alt" placeholder="Image Description" name="alt" />
+        <Form.Control placeholder="Image Description" name="alt" />
         </FloatingLabel>
       </Form.Group>
       </Col>
@@ -294,7 +285,7 @@ export function NewEvent(props) {
       <FloatingLabel controlId="floatingInput"
     label="Date"
     className="mb-3">
-        <Form.Control type="date" name='date' />
+        <Form.Control name='date' />
         </FloatingLabel>
         </Form.Group>
       </Col>
