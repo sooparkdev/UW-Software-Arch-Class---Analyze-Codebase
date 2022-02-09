@@ -151,22 +151,22 @@ These unit tests cover most of the Events.js module, except for a large chunk in
 <p> </p>
 
 <p><strong> 1.4 Process Flow </strong></p>
-<p> The system starts at module ‘App’ to render <NavBar/>, <PageHead/>, <EventPage/>, <NewEvent/>, <Forums/>, <NewPost/>, <Login/>, <ShowPost/>, <FilterBar/>, and <Footer/> each from corresponding modules. 
-<EventPage/> updates the state with the retrieved event objects from the database and renders <EventCard/> with it to display all the existing events, along with <FilterBar/> to display the filtering options. 
-<NewEvent/> pushes the inputs about an event received from the users to the database on a condition that the user is logged in when the button is clicked. It also renders <ErrorHandler/> to display an error occurred when submitting the form if there is one. 
-Similarly to <EventPage/>, <Forums/> updates the state with the retrieved post objects from the database and renders <ForumPost/> with it to display all the existing posts, along with <ForumOption/> to display boards that contain a thread count of each genre. 
-<NewPost/> pushes the inputs about a post received from the users to the database on a condition that the user is logged in when the button is clicked. It also renders <ErrorHandler/> to display an error occurred when submitting the post if there is one. 
-<ShowPost/> displays a more detailed version of the posts (relative to <ForumPost/> aforementioned ) in that it renders <NewComment/> to provide a textarea for the user to submit a comment input, as well as <Comment/> to display all the relevant comments. It updates the state with the retrieved post objects from the database in the first place to do the above.
-<NewComment/> renders <ErrorHandler/> to display an error occured when submitting the comment if there is one.
-<Login/> updates the ‘userData’ state with the retrieved user object from the database and renders either <LoginScreen/> or <UserScreen/> depending on whether the ‘userData’ is defined (in other words logged in) or not. 
-<LoginScreen/> renders <LoginError/> to display an error occurred when logging in if there is one. Similarly, <UserScreen/> renders <UserError/> to display the error for the corresponding situation as well. </p>
+<p> The system starts at module ‘App’ to render <strong>NavBar</strong>, <strong>PageHead</strong>, <strong>EventPage</strong>, <strong>NewEvent</strong>, <strong>Forums</strong>, <strong>NewPost</strong>, <strong>Login</strong>, <strong>ShowPost</strong>, <strong>FilterBar</strong>, and <strong>Footer</strong> each from corresponding modules. 
+<strong>EventPage</strong> updates the state with the retrieved event objects from the database and renders <strong>EventCard</strong> with it to display all the existing events, along with <strong>FilterBar</strong> to display the filtering options. 
+<strong>NewEvent</strong> pushes the inputs about an event received from the users to the database on a condition that the user is logged in when the button is clicked. It also renders <strong>ErrorHandler</strong> to display an error occurred when submitting the form if there is one. 
+Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the state with the retrieved post objects from the database and renders <strong>ForumPost</strong> with it to display all the existing posts, along with <strong>ForumOption</strong> to display boards that contain a thread count of each genre. 
+<strong>NewPost</strong> pushes the inputs about a post received from the users to the database on a condition that the user is logged in when the button is clicked. It also renders <strong>ErrorHandler</strong> to display an error occurred when submitting the post if there is one. 
+<strong>ShowPost</strong> displays a more detailed version of the posts (relative to <strong>ForumPost</strong> aforementioned) in that it renders <strong>NewComment</strong> to provide a textarea for the user to submit a comment input, as well as <strong>Comment</strong> to display all the relevant comments. It updates the state with the retrieved post objects from the database in the first place to do the above.
+<strong>NewComment</strong> renders <strong>ErrorHandler</strong> to display an error occured when submitting the comment if there is one.
+<strong>Login/> updates the ‘userData’ state with the retrieved user object from the database and renders either <strong>LoginScreen</strong> or <strong>UserScreen</strong> depending on whether the ‘userData’ is defined (in other words logged in) or not. 
+<strong>LoginScreen</strong> renders <strong>LoginError/> to display an error occurred when logging in if there is one. Similarly, <strong>UserScreen</strong> renders <strong>UserError</strong> to display the error for the corresponding situation as well. </p>
 
 
 <p><em> Figure 2: UML Sequence Diagram <em></p>
 
 <img src="images/P1_Checkpoint2_UML_Sequence_Diagram.png">
 
-<p><em> Caption: A graphical diagram that illustrates the order of interaction between different components to capture how operations are carried out in the app using vertical dotted lines (for each component) to represent time and horizontal arrows that extend between the vertical lines to represent actions performed between the components. what data was sent from which component to another. Reading this diagram begins at the top-left with the user of the system. <em></p>
+<p><em> Caption: A graphical diagram that illustrates the order of interaction between different components to capture how operations are carried out in the app using vertical dotted lines (for each component) to represent time and horizontal arrows that extend between the vertical lines to represent actions performed between the components. what data was sent from which component to another. Reading this diagram begins at the top-left with the user of the system. </em></p>
 
 <p> Description: The UML Sequence Diagram above describes the major functionalities of the Forums.js module, which in turn is that of the system. Events.js and Forums.js are two primary modules that define most of the functionalities, but as they both show similar interaction between components within, depicting the interactions between components within Forums.js suffice to explain how the system works. The diagram models the logic of operation and conveys how components interact with each other to complete a process. </p>
 
@@ -177,3 +177,5 @@ Similarly to <EventPage/>, <Forums/> updates the state with the retrieved post o
 
 
 ### 3 | Unit Tests
+
+
