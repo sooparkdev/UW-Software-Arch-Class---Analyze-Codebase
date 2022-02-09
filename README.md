@@ -151,7 +151,7 @@ These unit tests cover most of the Events.js module, except for a large chunk in
 <p> </p>
 
 <p><strong> 1.4 Process Flow </strong></p>
-<p> The system starts at module ‘App’ to render <strong>NavBar</strong>, <strong>PageHead</strong>, <strong>EventPage</strong>, <strong>NewEvent</strong>, <strong>Forums</strong>, <strong>NewPost</strong>, <strong>Login</strong>, <strong>ShowPost</strong>, <strong>FilterBar</strong>, and <strong>Footer</strong> each from corresponding modules. 
+<p> The system starts at module <strong>‘App’</strong> to render <strong>NavBar</strong>, <strong>PageHead</strong>, <strong>EventPage</strong>, <strong>NewEvent</strong>, <strong>Forums</strong>, <strong>NewPost</strong>, <strong>Login</strong>, <strong>ShowPost</strong>, <strong>FilterBar</strong>, and <strong>Footer</strong> each from corresponding modules. 
 <strong>EventPage</strong> updates the state with the retrieved event objects from the database and renders <strong>EventCard</strong> with it to display all the existing events, along with <strong>FilterBar</strong> to display the filtering options. 
 <strong>NewEvent</strong> pushes the inputs about an event received from the users to the database on a condition that the user is logged in when the button is clicked. It also renders <strong>ErrorHandler</strong> to display an error occurred when submitting the form if there is one. 
 Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the state with the retrieved post objects from the database and renders <strong>ForumPost</strong> with it to display all the existing posts, along with <strong>ForumOption</strong> to display boards that contain a thread count of each genre. 
@@ -166,14 +166,61 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
 
 <img src="images/P1_Checkpoint2_UML_Sequence_Diagram.png">
 
-<p><em> Caption: A graphical diagram that illustrates the order of interaction between different components to capture how operations are carried out in the app using vertical dotted lines (for each component) to represent time and horizontal arrows that extend between the vertical lines to represent actions performed between the components. what data was sent from which component to another. Reading this diagram begins at the top-left with the user of the system. </em></p>
+<p><em> A graphical diagram that illustrates the order of interaction between different components to capture how operations are carried out in the app using vertical dotted lines (for each component) to represent time and horizontal arrows that extend between the vertical lines to represent actions performed between the components. what data was sent from which component to another. Reading this diagram begins at the top-left with the user of the system. </em></p>
 
-<p> Description: The UML Sequence Diagram above describes the major functionalities of the Forums.js module, which in turn is that of the system. Events.js and Forums.js are two primary modules that define most of the functionalities, but as they both show similar interaction between components within, depicting the interactions between components within Forums.js suffice to explain how the system works. The diagram models the logic of operation and conveys how components interact with each other to complete a process. </p>
+<p> The UML Sequence Diagram above describes the major functionalities of the Forums.js module, which in turn is that of the system. Events.js and Forums.js are two primary modules that define most of the functionalities, but as they both show similar interaction between components within, depicting the interactions between components within Forums.js suffice to explain how the system works. The diagram models the logic of operation and conveys how components interact with each other to complete a process. </p>
 
 
 ### 2 | Architecture Deficiencies & Refactoring 
 
 <p> We chose to analyze the Events.js module as it consists of the right number of components, which in turn gives us an appropriate level of abstraction already without having to filter out ones to focus on. </p>
+
+<table>
+  <tr>
+    <th>Deficiency</th>
+    <th>Location</th>
+    <th>How It's Fixed</th>
+  </tr>
+  <tr>
+    <td>[Code Smell] Functions having mysterious names (doesn’t sufficiently convey what the functions are doing)</td>
+    <td>Inside ‘Events’ module</td>
+    <td>Changed the names (from left to right): 
+    Event → EventPage
+    Filter → FilterBar
+    BigCard → EventCard</td>
+  </tr>
+  <tr>
+    <td>Functional problem with ‘NewEvent’ component re-rendering infinitely</td>
+    <td>Inside ‘NewEvent’ component</td>
+    <td>Wrapping ‘onAuthStateChanged()’ method with ‘UseEffect()’ hook</td>
+  </tr>
+  <tr>
+    <td>Having invalid attribute ‘type=’ within <Form.Control> Elements</td>
+    <td>Inside ‘NewEvent’ component</td>
+    <td>Removing ‘type=’ attributes in all <strong>Form.Control</strong> elements<td>
+  </tr>
+  <tr>
+    <td>NewEvents is a different page not dependent on Events, so can be a different module rather than included in Events.js</td>
+    <td>Inside ‘Events’ module</td>
+    <td>Move NewEvents to a different module by itself, correct import statement in App.js</td>
+  </tr>
+  <tr>
+    <td>[Readability] Using unclear conditions for if statements</td>
+    <td>Inside ‘useEffect’ and ‘handleSubmit’ in the ‘NewEvent’ component</td>
+    <td>Clarify condition for if statements by writing boolean expressions rather than using a state variable’s value</td>
+  </tr>
+  <tr>
+    <td>Temporary field, fields are only set in certain circumstances</td>
+    <td>Inside the ‘handleSubmit’ of ‘NewEvent’</td>
+    <td>nitialize the variables outside of the loop</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
 
 
 ### 3 | Unit Tests
