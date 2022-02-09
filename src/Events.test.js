@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Router, MemoryRouter } from 'react-router-dom';
 import { EventPage, FilterBar, EventCard } from './components/Events.js'
@@ -48,6 +48,7 @@ describe('Filter component', () => {
         const handleFilterChange = () => {};
         render(<FilterBar filters={filters} onChange={handleFilterChange}/>);
         userEvent.selectOptions(screen.getByLabelText('Location'), 'Central District');
+        fireEvent.change(screen.getByLabelText('Date'), {target: {value: '2022-01-01'}})
         userEvent.selectOptions(screen.getByLabelText('Genre'), 'Country');
         expect(screen.getByText("Central District")).toBeInTheDocument();
         expect(screen.getByText("Country")).toBeInTheDocument();
