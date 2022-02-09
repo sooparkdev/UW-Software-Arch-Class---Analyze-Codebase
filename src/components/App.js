@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import { NavBar } from './Nav';
 import { PageHead } from './Header';
 import { Forums, NewPost, ShowPost, FilterGenre } from './Forums.js';
-import { Events, NewEvent } from './Events.js';
+import { EventPage, NewEvent } from './Events.js';
 import Footer from './Footer.js';
 import Login from './Login.js';
 import '../style.css';
@@ -23,7 +23,7 @@ export default function App(props) {
             <main>
                 <Router>
                     <Routes>
-                        <Route exact path="/" element={<Events cards={EVENTS} />} />
+                        <Route exact path="/" element={<EventPage cards={EVENTS} />} />
                         <Route path="/newevent" element={<NewEvent genres={GENRES} locations={LOCATIONS} />} />
                         <Route path="/forums" element={<Forums posts={FORUM_POSTS} forums={FORUM_OPTIONS} />} />
                         <Route path="/forums/newpost" element={<NewPost genres={FORUM_OPTIONS} />} />

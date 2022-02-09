@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {Container, Col, Row, Form, Button, FloatingLabel} from 'react-bootstrap';
 
 // Creates event card 
-export function Events(props){
+export function EventPage(props){
 
   // Event state
   const [eventsState, setEvents] = useState({})
@@ -53,7 +53,7 @@ export function Events(props){
     }))
   }
 
-  let filterElem = <Filter filters={filters} onChange={handleFilterChange} />; 
+  let filterElem = <FilterBar filters={filters} onChange={handleFilterChange} />; 
 
   let bigEventElem = currEventArray.filter(card => {
     const { neighborhood, date, genre } = filters
@@ -65,7 +65,7 @@ export function Events(props){
     return genreShouldShow && neighborhoodShouldShow && dateShouldShow
     
     }).map(currCard => {
-      return <BigCard card={currCard} key={currCard.id} />
+      return <EventCard card={currCard} key={currCard.id} />
       
   });
 
@@ -94,7 +94,7 @@ export function Events(props){
   );
 }
 
-export function Filter(props) {
+export function FilterBar(props) {
   const {filters} = props
 
   const onChange = (key, value) => {
@@ -143,7 +143,7 @@ export function Filter(props) {
   )
 }
 
-export function BigCard(props) {
+export function EventCard(props) {
     const card = props.card;
     const img = card.img;
     const name = card.band;
