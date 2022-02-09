@@ -212,7 +212,7 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
   <tr>
     <td>Temporary field, fields are only set in certain circumstances</td>
     <td>Inside the ‘handleSubmit’ of ‘NewEvent’</td>
-    <td>nitialize the variables outside of the loop</td>
+    <td>Initialize the variables outside of the loop</td>
   </tr>
   <tr>
     <td></td>
