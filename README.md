@@ -168,7 +168,7 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
 
 <p><em> A graphical diagram that illustrates the order of interaction between different components to capture how operations are carried out in the app using vertical dotted lines (for each component) to represent time and horizontal arrows that extend between the vertical lines to represent actions performed between the components. what data was sent from which component to another. Reading this diagram begins at the top-left with the user of the system. </em></p>
 
-<p> The UML Sequence Diagram above describes the major functionalities of the Forums.js module, which in turn is that of the system. Events.js and Forums.js are two primary modules that define most of the functionalities, but as they both show similar interactions between components within, depicting the interactions within Forums.js suffice to explain how the system works. The diagram models the logic of operation and conveys how components interact with each other to complete the process. </p>
+<p> The UML Sequence Diagram above describes the major functionalities of the Forums.js module, which in turn is that of the system. Events.js and Forums.js are two primary modules that define most of the functionalities, but as they both show similar interactions among components within, depicting the interactions in Forums.js suffice to explain how the system works. The diagram models the logic of operation and conveys how components interact with each other to complete the process. </p>
 
 
 ### 2 | Architecture Deficiencies & Refactoring 
