@@ -158,11 +158,11 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
 <strong>NewPost</strong> pushes the inputs about a post received from the users to the database on a condition that the user is logged in when the button is clicked. It also renders <strong>ErrorHandler</strong> to display an error occurred when submitting the post if there is one. 
 <strong>ShowPost</strong> displays a more detailed version of the posts (relative to <strong>ForumPost</strong> aforementioned) in that it renders <strong>NewComment</strong> to provide a textarea for the user to submit a comment input, as well as <strong>Comment</strong> to display all the relevant comments. It updates the state with the retrieved post objects from the database in the first place to do the above.
 <strong>NewComment</strong> renders <strong>ErrorHandler</strong> to display an error occured when submitting the comment if there is one.
-<strong>Login/> updates the ‘userData’ state with the retrieved user object from the database and renders either <strong>LoginScreen</strong> or <strong>UserScreen</strong> depending on whether the ‘userData’ is defined (in other words logged in) or not. 
-<strong>LoginScreen</strong> renders <strong>LoginError/> to display an error occurred when logging in if there is one. Similarly, <strong>UserScreen</strong> renders <strong>UserError</strong> to display the error for the corresponding situation as well. </p>
+<strong>Login</strong> updates the ‘userData’ state with the retrieved user object from the database and renders either <strong>LoginScreen</strong> or <strong>UserScreen</strong> depending on whether the ‘userData’ is defined (in other words logged in) or not. 
+<strong>LoginScreen</strong> renders <strong>LoginError</strong> to display an error occurred when logging in if there is one. Similarly, <strong>UserScreen</strong> renders <strong>UserError</strong> to display the error for the corresponding situation as well. </p>
 
 
-<p><em> Figure 2: UML Sequence Diagram <em></p>
+<p><em> Figure 2: UML Sequence Diagram </em></p>
 
 <img src="images/P1_Checkpoint2_UML_Sequence_Diagram.png">
 
