@@ -184,10 +184,10 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
   <tr>
     <td>[Code Smell] Functions having mysterious names (doesn’t sufficiently convey what the functions are doing)</td>
     <td>Inside ‘Events’ module</td>
-    <td>Changed the names (from left to right): \n
-    Event → EventPage \n
-    Filter → FilterBar \n
-    BigCard → EventCard</td>
+    <td><pre>Changed the names (from left to right): 
+    Event → EventPage 
+    Filter → FilterBar 
+    BigCard → EventCard</pre></td>
   </tr>
   <tr>
     <td>Functional problem with ‘NewEvent’ component re-rendering infinitely</td>
