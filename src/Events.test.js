@@ -2,7 +2,8 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Router, MemoryRouter } from 'react-router-dom';
-import { Events, Filter, NewEvent, BigCard, ErrorHandler } from './components/Events.js'
+import { EventPage, FilterBar, EventCard } from './components/Events.js'
+import { NewEvent, ErrorHandler } from './components/NewEvent.js'
 import GENRES from './data/genres.json'
 import LOCATIONS from './data/locations.json'
 
@@ -11,12 +12,12 @@ import LOCATIONS from './data/locations.json'
 // INCLUDE A TEST THAT CHECKS IF NON-URL VALUES ARE ACCEPTED IN DATA FOR EVENTS
 describe('Events component', () => {
     test('Events renders correctly using database data', () => {
-        render(<Events/>, {wrapper: MemoryRouter});
+        render(<EventPage/>, {wrapper: MemoryRouter});
         expect(screen.getByText("Haha look at us go")).toBeInTheDocument();
         expect(screen.getByAltText("person playing music")).toBeInTheDocument();
     })
     test('Events page can navigate users to the New Events page', () => {
-        render(<Events/>, {wrapper: MemoryRouter});
+        render(<EventPage/>, {wrapper: MemoryRouter});
         expect(screen.getByRole('link')).toHaveAttribute('href', '/newevent');
     })
 })
@@ -30,7 +31,7 @@ describe('Filter component', () => {
         };
         const handleFilterChange = () => {};
 
-        render(<Filter filters={filters} onChange={handleFilterChange} />);
+        render(<FilterBar filters={filters} onChange={handleFilterChange} />);
         //screen.debug()
         expect(screen.getByText("Event Filter")).toBeInTheDocument();
         expect(screen.getByLabelText("Location")).toBeInTheDocument();
@@ -45,7 +46,7 @@ describe('Filter component', () => {
             genre: "",
         };
         const handleFilterChange = () => {};
-        render(<Filter filters={filters} onChange={handleFilterChange}/>);
+        render(<FilterBar filters={filters} onChange={handleFilterChange}/>);
         userEvent.selectOptions(screen.getByLabelText('Location'), 'Central District');
         userEvent.selectOptions(screen.getByLabelText('Genre'), 'Country');
         expect(screen.getByText("Central District")).toBeInTheDocument();
@@ -94,7 +95,7 @@ describe ('Big Card component', () => {
 
         let cardId = "";
         
-        render(<BigCard card={card} key={cardId}/>);
+        render(<EventCard card={card} key={cardId}/>);
         expect(screen.getByText("mock name")).toBeInTheDocument();
         expect(screen.getByAltText("mock alt"));
         expect(screen.getByText("2022-01-30"));
