@@ -255,7 +255,20 @@ There are no standards violations and design deficiencies that apply to the code
 <p> All of our tests can be found in 'src/Events.test.js', which is able to run thanks to the setupTests.js file also found in the src folder. To run the tests, navigate to the 'project-1-taylorjackson10' directory, open a terminal, enter the command 'npm run test'. After this is entered, the terminal will prompt the user for another command. To run all of the tests, the user should then enter 'a'. Doing so will run each test, showing the number of tests that passed or failed as well as what each individual test is. If a test fails, the test will print our an error in the terminal containing the error statement. </p>
 
 
-<p><strong> 3.2 Tests and Justification </strong></p>
+<p><strong> 3.2 Test Coverage and Results</strong></p>
+
+<img src="images/test-coverage.GIF">
+
+<p><em> Figure 3: Code Coverage </em></p>
+
+<p><em> A screen capture of a table showing code coverage. Events.js has 93.61% in Statements, 58.82% in Branch, 91.3% in Functions, 92.3% in Lines, with lines #24 and #51 not covered. NewEvent.js has 87.5% in Statements, 50% in Branch, 100% in Functions, 87.5% in Lines, with lines #50-52 and 154 not covered. </em></p>
+
+<p> We have full coverage over all the parts that can be tested in our architectural element. The uncovered lines involve aspects that are either out of scope of this course or are unnecessary to have one. Line #24 in Events.js prints out a message if there is no event data in the database, and this is something that we don't really have to have a test for as we are interested in the performance of functionalies given the mock data(input). Line #51 updates a state variable named 'filters' whenever the selected option in the filters are changed, but to test this we would need to render both the EventsPage and the FilterBar, thus making the test not a unit test anymore. <br>
+Lines #50-52 prints out an error message and also updates a state variable named 'eventError' if the user is not logged in, but we can't set a precondition for a user not logged in with what we've learned in the class so far, and therefore can't test the corresponding aspect. Line #154 is tied in with lines #50-52 aformentioned as the state variable 'eventError' gets passed on to it to return 'null' when the there is no error (in other words if the 'eventError' is undefined), which also goes back to the precondition that the user is not logged in that is beyond the scope of writing a test for. <br>
+Other than these lines, we have practically covered all aspects of our architectural element and demonstrated a high coverage percentage.</p>
+
+
+<p><strong> 3.3 Tests and Justification </strong></p>
 <table>
   <tr>
     <th>Tests</th>
@@ -293,19 +306,3 @@ There are no standards violations and design deficiencies that apply to the code
     <td>Determine if the ErrorHandler displays the correct value when called</td>
     <td>This test ensures that the ErrorHandler performs its sole job correctly when needed by the NewEvent element</td>
   </tr>
-
-  
-  <p><strong> 3.3 Test Coverage and Results</strong></p>
-
-  <img src="images/test-coverage.GIF">
-
-  <p><em> Figure 3: Code Coverage </em></p>
-
-  <p><em> A screen capture of a table showing code coverage. Events.js has 93.61% in Statements, 58.82% in Branch, 91.3% in Functions, 92.3% in Lines, with lines #24 and #51 not covered. NewEvent.js has 87.5% in Statements, 50% in Branch, 100% in Functions, 87.5% in Lines, with lines #50-52 and 154 not covered. </em></p>
-
-  <p> We have full coverage over all the parts that can be tested in our architectural element. The uncovered lines involve aspects that are either out of scope of this course or are unnecessary to have one. Line #24 in Events.js prints out a message if there is no event data in the database, and this is something that we don't really have to have a test for as we are interested in the performance of functionalies given the mock data(input). Line #51 updates a state variable named 'filters' whenever the selected option in the filters are changed, and ........... <br>
-  Lines #50-52 prints out an error message and also updates a state variable named 'eventError' if the user is not logged in, but we can't set a precondition for a user not logged in with what we've learned in the class so far, and therefore can't test the corressponding aspect. Line #154 is tied in with lines #50-52 aformentioned as the state variable 'eventError' gets passed on to it to return 'null' when the there is no error (in other words if the 'eventError' is undefined), which also goes back to the precondition that the user is not logged in that is beyond the scope of writing a test for. <br>
-  Other than these lines, we have practically covered all aspects of our architectural element and demonstrates a high coverage percentage.</p>
-
-
-
