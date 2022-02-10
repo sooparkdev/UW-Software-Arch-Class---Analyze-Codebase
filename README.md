@@ -254,6 +254,7 @@ There are no standards violations and design deficiencies that apply to the code
 <p><strong> 3.1 Running the Test Suite </strong></p>
 <p> All of our tests can be found in 'src/Events.test.js', which is able to run thanks to the setupTests.js file also found in the src folder. To run the tests, navigate to the 'project-1-taylorjackson10' directory, open a terminal, enter the command 'npm run test'. After this is entered, the terminal will prompt the user for another command. To run all of the tests, the user should then enter 'a'. Doing so will run each test, showing the number of tests that passed or failed as well as what each individual test is. If a test fails, the test will print our an error in the terminal containing the error statement. </p>
 
+
 <p><strong> 3.2 Tests and Justification </strong></p>
 <table>
   <tr>
@@ -293,9 +294,10 @@ There are no standards violations and design deficiencies that apply to the code
     <td>This test ensures that the ErrorHandler performs its sole job correctly when needed by the NewEvent element</td>
   </tr>
 
+  
   <p><strong> 3.3 Test Coverage and Results</strong></p>
 
-  <img src="images/test-coverage.gif">
+  <img src="images/test-coverage.GIF">
 
   <p><em> Figure 3: Code Coverage </em></p>
 
