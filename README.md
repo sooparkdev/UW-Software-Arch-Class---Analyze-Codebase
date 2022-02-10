@@ -174,7 +174,7 @@ For <strong>EventPage</strong>, it is connected to the <strong>EventCard</strong
 
 <p><em> Figure 1: UML Class Diagram</em></p>
 
-<img src="images/P1_Report_Class_Diagram.JPG">
+<img src="images/P1_Report_Class_Diagram.jpg">
 
 <p><em>  A graphic representation of the system and its software structure. Describes the system by depicting each element, the traits and functions of each element, and the relationship between it and other elements. In this case, the arrows signify the direction of the relationship, as elements with an arrow going into them are being called or rendered by the other element. </em></p>
 
