@@ -37,7 +37,7 @@ export function NewEvent(props) {
       const eventContent = event.target.elements.eventContent.value;
       const db = getDatabase();
       if (currUser != null) {  
-        push(ref(db, "events")), {
+        push(ref(db, "events"), {
             band: band,
             img: bandImage,
             alt: alt,
@@ -45,7 +45,7 @@ export function NewEvent(props) {
             location: location,
             genre: genre,
             eventContent: eventContent
-        };
+        });
   
           
       } else {

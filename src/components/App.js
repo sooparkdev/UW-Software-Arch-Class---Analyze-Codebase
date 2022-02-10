@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import { NavBar } from './Nav';
 import { PageHead } from './Header';
-import { Forums, ShowPost, FilterGenre } from './Forums.js';
-import { NewPost } from './NewPost.js';
-import { EventPage, NewEvent } from './Events.js';
+import { Forums, ShowPost, FilterGenre, NewPost } from './Forums.js';
+import { EventPage } from './Events.js';
+import { NewEvent } from './NewEvent.js';
 import Footer from './Footer.js';
 import Login from './Login.js';
 import '../style.css';
