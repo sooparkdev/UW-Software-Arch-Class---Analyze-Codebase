@@ -25,6 +25,7 @@ export function EventPage(props){
         }
       });
     return function cleanup() { 
+      setEvents({})
       stopListener();
       console.log("component has been removed!")
     }
