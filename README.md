@@ -281,16 +281,16 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
     <td>This test makes sure that the FilterBar is operational to the user, allowing them to interact with it to choose the event criteria they are interested in</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>Determine if the NewEvent renders correctly</td>
+    <td>This test ensures that the form to publish events is working, allowing users to submit them, which is part of the whole purpose of this web app</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>Determine if the form is submitted once the user clicks on the button</td>
+    <td>This test is crucial as it ensures that the core functionality of this web app is working, that being allowing users to publish their events</td>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
+    <td>Determine if the EventCard renders correctly when given card data</td>
+    <td>This test is necessary as it checks if the events published by the users are being displayed in the web app, allowing other users to be informed of and engage with those events</td>
   </tr>
   <tr>
     <td>Determine if the ErrorHandler displays the correct value when called</td>

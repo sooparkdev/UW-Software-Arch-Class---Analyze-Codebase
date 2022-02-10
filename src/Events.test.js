@@ -78,7 +78,6 @@ describe ('NewEvent component', () => {
 
 });
 
-
 describe ('Big Card component', () => {
     test('Event cards rendered correctly', () => {
         let card = {  
