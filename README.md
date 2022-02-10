@@ -244,11 +244,6 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
     <td>Inside the ‘handleSubmit’ of ‘NewEvent’</td>
     <td>Initialize the variables outside of the loop</td>
   </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
 </table>
 
 There are no standards violations and design deficiencies that apply to the codebase, let alone the Event.js module, we are analyzing. 
@@ -299,3 +294,16 @@ There are no standards violations and design deficiencies that apply to the code
   </tr>
 
   <p><strong> 3.3 Test Coverage and Results</strong></p>
+
+  <img src="images/test-coverage.gif">
+
+  <p><em> Figure 3: Code Coverage </em></p>
+
+  <p><em> A screen capture of a table showing code coverage. Events.js has 93.61% in Statements, 58.82% in Branch, 91.3% in Functions, 92.3% in Lines, with lines #24 and #51 not covered. NewEvent.js has 87.5% in Statements, 50% in Branch, 100% in Functions, 87.5% in Lines, with lines #50-52 and 154 not covered. </em></p>
+
+  <p> We have full coverage over all the parts that can be tested in our architectural element. The uncovered lines involve aspects that are either out of scope of this course or are unnecessary to have one. Line #24 in Events.js prints out a message if there is no event data in the database, and this is something that we don't really have to have a test for as we are interested in the performance of functionalies given the mock data(input). Line #51 updates a state variable named 'filters' whenever the selected option in the filters are changed, and ........... <br>
+  Lines #50-52 prints out an error message and also updates a state variable named 'eventError' if the user is not logged in, but we can't set a precondition for a user not logged in with what we've learned in the class so far, and therefore can't test the corressponding aspect. Line #154 is tied in with lines #50-52 aformentioned as the state variable 'eventError' gets passed on to it to return 'null' when the there is no error (in other words if the 'eventError' is undefined), which also goes back to the precondition that the user is not logged in that is beyond the scope of writing a test for. <br>
+  Other than these lines, we have practically covered all aspects of our architectural element and demonstrates a high coverage percentage.</p>
+
+
+

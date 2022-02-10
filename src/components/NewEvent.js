@@ -45,9 +45,7 @@ export function NewEvent(props) {
             location: location,
             genre: genre,
             eventContent: eventContent
-        });
-  
-          
+        });   
       } else {
           const errorMessage = "Cannot make post! User is not logged in."
           console.log("something went wrong with user");

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.3% </span>
+                <span class="strong">93.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/46</span>
+                <span class='fraction'>44/47</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">86.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>12/15</span>
+                <span class='fraction'>13/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">95.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/45</span>
+                <span class='fraction'>44/46</span>
             </div>
         
             
@@ -239,7 +239,9 @@
 <a name='L180'></a><a href='#L180'>180</a>
 <a name='L181'></a><a href='#L181'>181</a>
 <a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,7 +254,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
@@ -265,6 +267,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -339,7 +342,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
@@ -362,7 +365,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -395,6 +398,7 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -425,8 +429,8 @@
 import { GrLocation } from 'react-icons/gr';
 import { BsCalendarDate } from 'react-icons/bs';
 import { CgMusicNote } from 'react-icons/cg';
-import { BrowserRouter, Link } from 'react-router-dom'
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { Link } from 'react-router-dom'
+import { getDatabase, ref, push, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {Container, Col, Row, Form, Button, FloatingLabel} from 'react-bootstrap';
 &nbsp;
@@ -448,6 +452,7 @@ export function EventPage(props){
         }
       });
     return function cleanup() { 
+      setEvents({})
       stopListener();
       console.log("component has been removed!")
     }
@@ -544,7 +549,7 @@ export function FilterBar(props) {
             &lt;/div&gt; 
             &lt;div className="input-items"&gt;
                 &lt;label htmlFor="date-input"&gt;Date&lt;/label&gt;
-                &lt;input type="date" id="date-input" name="event_date" min="2021-01-01" max="2023-12-31" value={filters.date} onChange={<span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; <span class="cstat-no" title="statement not covered" >onChange('date', event.target.value)}</span>/&gt;
+                &lt;input type="date" id="date-input" name="event_date" min="2021-01-01" max="2023-12-31" value={filters.date} onChange={(event) =&gt; onChange('date', event.target.value)}/&gt;
             &lt;/div&gt;
             &lt;div className="input-items"&gt;
               &lt;label htmlFor="genre-input"&gt;Genre&lt;/label&gt;
@@ -603,14 +608,15 @@ export function EventCard(props) {
         &lt;/div&gt;
       &lt;/div&gt;
     )
-}</pre></td></tr></table></pre>
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Feb 09 2022 11:23:35 GMT-0800 (Pacific Standard Time)
+                at Wed Feb 09 2022 19:47:22 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
