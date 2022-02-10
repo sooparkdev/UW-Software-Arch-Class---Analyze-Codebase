@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { getDatabase, ref, push} from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {Container, Col, Row, Form, Button, FloatingLabel} from 'react-bootstrap';
 
@@ -23,7 +23,6 @@ export function NewEvent(props) {
       });
       return function cleanup() { 
         stopListener();
-        console.log("component has been removed!")
       }
     }, []);
   

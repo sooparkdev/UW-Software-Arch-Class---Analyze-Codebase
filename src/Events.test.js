@@ -1,15 +1,12 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Router, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { EventPage, FilterBar, EventCard } from './components/Events.js'
 import { NewEvent, ErrorHandler } from './components/NewEvent.js'
 import GENRES from './data/genres.json'
 import LOCATIONS from './data/locations.json'
 
-// Just making sure that the barebones home page actually renders correctly
-
-// INCLUDE A TEST THAT CHECKS IF NON-URL VALUES ARE ACCEPTED IN DATA FOR EVENTS
 describe('Events component', () => {
     test('Events renders correctly using database data', () => {
         render(<EventPage/>, {wrapper: MemoryRouter});

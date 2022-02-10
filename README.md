@@ -148,7 +148,37 @@ These unit tests cover most of the Events.js module, except for a large chunk in
 </table>
 
 <p><strong> 1.3 Relationship Between Elements </strong></p>
-<p> </p>
+<p> The <strong>App</strong> element acts as the main component of the web application, with it rendering the web app pages. Each page consists of multiple modules and many elements. The App element connects directly with ten elements: </p>
+<ol type="1">
+  <li>EventPage</li>
+  <li>NewEvent</li>
+  <li>Forum</li>
+  <li>NewPost</li>
+  <li>ShowPost</li>
+  <li>FilterGenre</li>
+  <li>Login</li>
+  <li>NavBar</li>
+  <li>PageHead</li>
+  <li>Footer</li>
+</ol>  
+
+<p> The first seven elements are all the content of their own page, and the ‘App’ is the element that holds them all together and allows the user to go from one to another. Each of these first seven elements use smaller elements to create a piece or perform a specific task for that larger page element.
+For <strong>EventPage</strong>, it is connected to the <strong>EventCard</strong> element which produces the cards containing event information, as well as the <strong>FilterBar</strong> that filters the displayed event cards. <strong>NewEvent</strong> utilizes the <strong>ErrorHandler</strong> element, allowing it better deal with errors that arise when creating new events (such as invalid info being inputted or the user not having the authority to create a new event).
+
+<strong>Forum</strong> uses the <strong>ForumPost</strong> element to create individual posts made by users, while <strong>ForumOption</strong> creates the genre-based threads for users to comment on. The <strong>NewPost</strong> element operates similarly to <strong>NewEvent</strong>, meaning that it also allows users to create a new item to be rendered (in this case a new forum post), and utilizes an <strong>ErrorHandler</strong> element to catch and print any errors. <strong>ShowPost</strong> is the element that renders a forum post as its own page, allowing users to view more info regarding it and interact with it. This is performed by using two smaller elements to accomplish this, those being the <strong>NewComment</strong> and <strong>ShowComments</strong> elements (which renders all of the comments, using another element <strong>Comment</strong> to create the individual comments to be rendered). 
+
+<strong>Login</strong> is connected to two other elements, <strong>LoginScreen</strong> and <strong>UserScreen</strong>. These are the possible choices for the <strong>Login</strong> element, determining what to render. Both of these screen elements also have error handlers, those being <strong>LoginError</strong> and <strong>UserError</strong>.
+ </p>
+
+
+
+<p><em> Figure 1: UML Class Diagram</em></p>
+
+<img src="images/P1_Report_Class_Diagram.JPG">
+
+<p><em>  A graphic representation of the system and its software structure. Describes the system by depicting each element, the traits and functions of each element, and the relationship between it and other elements. In this case, the arrows signify the direction of the relationship, as elements with an arrow going into them are being called or rendered by the other element. </em></p>
+
+<p> The UML class diagram above describes the overall structure of the web application system, showing how the application starts from the <strong>App</strong> element, which in turn calls each of the other page elements. These page elements then call other smaller elements to render specific pieces of the page or react to a user's input. Each color used in the diagram represents a different module in which the elements are located. </p>
 
 <p><strong> 1.4 Process Flow </strong></p>
 <p> The system starts at module <strong>‘App’</strong> to render <strong>NavBar</strong>, <strong>PageHead</strong>, <strong>EventPage</strong>, <strong>NewEvent</strong>, <strong>Forums</strong>, <strong>NewPost</strong>, <strong>Login</strong>, <strong>ShowPost</strong>, <strong>FilterBar</strong>, and <strong>Footer</strong> each from corresponding modules. 
@@ -225,4 +255,43 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
 
 ### 3 | Unit Tests
 
+<p><strong> 3.1 Running the Test Suite </strong></p>
+<p> All of our tests can be found in 'src/Events.test.js', which is able to run thanks to the setupTests.js file also found in the src folder. To run the tests, navigate to the 'project-1-taylorjackson10' directory, open a terminal, enter the command 'npm run test'. After this is entered, the terminal will prompt the user for another command. To run all of the tests, the user should then enter 'a'. Doing so will run each test, showing the number of tests that passed or failed as well as what each individual test is. If a test fails, the test will print our an error in the terminal containing the error statement. </p>
 
+<table>
+  <tr>
+    <th>Tests</th>
+    <th>Justification</th>
+  </tr>
+  <tr>
+    <td>Determine if the EventPage renders correctly when given starting events data</td>
+    <td>This test is necessary as it ensures that the first core functionality of the EventPage is working, that being displaying event cards using data from the event database</td>
+  </tr>
+  <tr>
+    <td>Determine if the EventPage can correctly send the user to the NewEvent page when requested</td>
+    <td>This test is required as it checks if the other core functionality of the EventPage is working, that being allowing the user to navigate to another page</td>
+  </tr>
+  <tr>
+    <td>Determine if the FilterBar has each input box labeled clearly when the site first loads</td>
+    <td>This test ensures that the FilterBar is ready to use when a user loads the page, as without the label values a user may be confused as to how correctly operate the filter</td>
+  </tr>
+  <tr>
+    <td>Determine if the FilterBar can have values selected by the user</td>
+    <td>This test makes sure that the FilterBar is operational to the user, allowing them to interact with it to choose the event criteria they are interested in</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Determine if the ErrorHandler displays the correct value when called</td>
+    <td>This test ensures that the ErrorHandler performs its sole job correctly when needed by the NewEvent element</td>
+  </tr>
