@@ -257,9 +257,9 @@ There are no standards violations and design deficiencies that apply to the code
 
 <p><strong> 3.2 Test Coverage and Results</strong></p>
 
-<img src="images/test-coverage.GIF">
-
 <p><em> Figure 3: Code Coverage </em></p>
+
+<img src="images/test-coverage.GIF">
 
 <p><em> A screen capture of a table showing code coverage. Events.js has 93.61% in Statements, 58.82% in Branch, 91.3% in Functions, 92.3% in Lines, with lines #24 and #51 not covered. NewEvent.js has 87.5% in Statements, 50% in Branch, 100% in Functions, 87.5% in Lines, with lines #50-52 and 154 not covered. </em></p>
 
