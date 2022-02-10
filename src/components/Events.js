@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { GrLocation } from 'react-icons/gr';
 import { BsCalendarDate } from 'react-icons/bs';
 import { CgMusicNote } from 'react-icons/cg';
-import { BrowserRouter, Link } from 'react-router-dom'
-import { getDatabase, ref, set, push, onValue } from "firebase/database";
+import { Link } from 'react-router-dom'
+import { getDatabase, ref, push, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {Container, Col, Row, Form, Button, FloatingLabel} from 'react-bootstrap';
 
