@@ -251,6 +251,7 @@ Similarly to <strong>EventPage</strong>, <strong>Forums</strong> updates the sta
   </tr>
 </table>
 
+There are no standards violations and design deficiencies that apply to the codebase, let alone the Event.js module, we are analyzing. 
 
 
 ### 3 | Unit Tests
